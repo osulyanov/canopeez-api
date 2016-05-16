@@ -16,6 +16,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'annotate', github: 'ctran/annotate_models'
 end
 
 group :development do
