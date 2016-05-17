@@ -11,14 +11,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
+gem 'cancancan', '~> 1.10'
+gem 'doorkeeper'
 
 group :production do
   gem 'rails_12factor'
-end
-
-group :development, :test do
-  gem 'byebug'
-  gem 'annotate', github: 'ctran/annotate_models'
 end
 
 group :development do
@@ -26,4 +23,17 @@ group :development do
   gem 'letter_opener'
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'oauth2'
+  gem 'annotate', github: 'ctran/annotate_models'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner'
+  gem 'fakeredis', require: 'fakeredis/rspec'
 end
