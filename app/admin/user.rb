@@ -5,22 +5,28 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
-    column :current_sign_in_at
-    column :sign_in_count
-    column :created_at
+    column :full_name
+    column :role
+    column :is_premium
     actions
   end
 
   filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
+  filter :role, as: :select, collection: User.roles
+  filter :is_premium
 
   form do |f|
-    f.inputs 'Admin Details' do
+    f.inputs 'User Details' do
       f.input :email
-      f.input :password
-      f.input :password_confirmation
+      if f.object.new_record?
+        f.input :password
+        f.input :password_confirmation
+      end
+      f.input :role
+      f.input :name
+      f.input :surname
+      f.input :school
+      f.input :is_premium
     end
     f.actions
   end
