@@ -5,6 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: { admin: 0, user: 1 }
+
+  def display_name
+    full_name if full_name.present?
+    email
+  end
+
+  def full_name
+    [name, surname].select(&:present?).join(' ')
+  end
 end
 
 # == Schema Information
