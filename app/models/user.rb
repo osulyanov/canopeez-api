@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   enum role: { admin: 0, user: 1 }
 
   def display_name
-    full_name if full_name.present?
-    email
+    full_name.present? ? full_name : email
   end
 
   def full_name
