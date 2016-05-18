@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   use_doorkeeper
   ActiveAdmin.routes(self)
-  root to: 'home#index'
-  devise_for :user, controllers: {
+  devise_for :users, controllers: {
       sessions: 'user/sessions',
       passwords: 'user/password',
       registrations: 'user/registrations'
   }
+  root to: 'home#index'
 end
