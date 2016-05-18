@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  enum role: { admin: 0, user: 1 }
 end
 
 # == Schema Information
@@ -20,6 +22,11 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  role                   :integer          default(1), not null
+#  name                   :string
+#  surname                :string
+#  school                 :string
+#  is_premium             :boolean          default(FALSE), not null
 #
 # Indexes
 #
