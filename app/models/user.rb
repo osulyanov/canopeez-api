@@ -20,7 +20,6 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
-#  is_admin               :boolean          default(FALSE), not null
 #
 # Indexes
 #
