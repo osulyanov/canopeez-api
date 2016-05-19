@@ -1,4 +1,4 @@
-class User::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   protect_from_forgery with: :null_session, if: -> { request.format.json? }
   respond_to :json
 
