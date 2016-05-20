@@ -13,6 +13,7 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem 'cancancan', '~> 1.10'
 gem 'doorkeeper'
+gem 'devise_token_auth'
 
 group :production do
   gem 'rails_12factor'
