@@ -12,8 +12,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem 'cancancan', '~> 1.10'
-gem 'doorkeeper'
 gem 'devise_token_auth'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :production do
   gem 'rails_12factor'

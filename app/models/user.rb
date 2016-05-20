@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-  include DeviseTokenAuth::Concerns::User
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  include DeviseTokenAuth::Concerns::User
 
   enum role: { admin: 0, user: 1 }
 
@@ -30,11 +29,6 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
-#  role                   :integer          default(1), not null
-#  name                   :string
-#  surname                :string
-#  school                 :string
-#  is_premium             :boolean          default(FALSE), not null
 #
 # Indexes
 #
