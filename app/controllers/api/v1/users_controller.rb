@@ -48,6 +48,72 @@ module Api
 
       def sign_in
       end
+
+      api :POST, '/v1/users', 'Sign Up'
+      description <<-EOS
+        ## Description
+        Sign up user. Return user data and auth headers if all data is valid,
+        otherwise returns errors.
+      EOS
+      param_group :user
+      example <<-EOS
+        Success:
+        {
+          "status": "success",
+          "data": {
+            "id": 5,
+            "provider": "email",
+            "uid": "em10@il.ru",
+            "name": "Name",
+            "surname": "Surname",
+            "school": null,
+            "nickname": null,
+            "image": null,
+            "email": "em10@il.ru",
+            "role": "user",
+            "is_premium": false,
+            "created_at": "2016-05-23T11:05:56.612Z",
+            "updated_at": "2016-05-23T11:05:56.688Z"
+          }
+        }
+
+        Headers:
+        Access-Token → 8NG7aliy-A5huQQR0sqgJQ
+        Client → GhqxzwmVSOpkjW-2W18JWA
+        Expiry → 1465211156
+        Uid → em10@il.ru
+
+        Error:
+        {
+          "status": "error",
+          "data": {
+            "id": null,
+            "provider": "email",
+            "uid": "",
+            "name": "Name",
+            "surname": "Surname",
+            "school": null,
+            "nickname": null,
+            "image": null,
+            "email": "em10@il.ru",
+            "role": "user",
+            "is_premium": false,
+            "created_at": null,
+            "updated_at": null
+          },
+          "errors": {
+            "email": [
+              "already in use"
+            ],
+            "full_messages": [
+              "Email already in use"
+            ]
+          }
+        }
+      EOS
+
+      def sign_up
+      end
     end
   end
 end
