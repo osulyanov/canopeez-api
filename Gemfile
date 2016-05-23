@@ -16,6 +16,8 @@ gem 'devise_token_auth'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'apipie-rails', github: 'Apipie/apipie-rails'
+gem 'maruku'
 
 group :production do
   gem 'rails_12factor'
