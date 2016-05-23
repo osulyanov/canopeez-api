@@ -154,6 +154,28 @@ module Api
 
       def update
       end
+
+      api :DELETE, '/v1/users/sign_out', 'Sign Out'
+      description <<-EOS
+        ## Description
+        Destroys auth token.
+      EOS
+      param_group :user
+      example <<-EOS
+        Success:
+        {
+          "success": true
+        }
+
+        Auth error:
+        {
+          "errors": [
+            "User was not found or was not logged in."
+          ]
+        }
+      EOS
+      def sign_out
+      end
     end
   end
 end
