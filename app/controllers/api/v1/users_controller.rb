@@ -114,6 +114,46 @@ module Api
 
       def sign_up
       end
+
+      api :PUT, '/v1/users', 'Update account'
+      description <<-EOS
+        ## Description
+        Updates users data. Return user data and auth headers if all data is valid,
+        otherwise returns errors.
+      EOS
+      param_group :user
+      example <<-EOS
+        Success:
+        {
+          "status": "success",
+          "data": {
+            "id": 1,
+            "provider": "email",
+            "uid": "admin@example.com",
+            "name": "Name4",
+            "surname": null,
+            "school": null,
+            "nickname": null,
+            "image": null,
+            "email": "admin@example.com",
+            "role": "admin",
+            "is_premium": false,
+            "created_at": "2016-05-20T09:58:24.366Z",
+            "updated_at": "2016-05-23T11:32:27.335Z"
+          }
+        }
+
+        Auth error:
+        {
+          "status": "error",
+          "errors": [
+            "User not found."
+          ]
+        }
+      EOS
+
+      def update
+      end
     end
   end
 end
