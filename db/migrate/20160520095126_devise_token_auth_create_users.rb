@@ -45,7 +45,11 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration
       t.boolean :is_premium, null: false, default: false
 
       ## Tokens
-      t.json :tokens
+      if json_supported_database?
+        t.json :tokens
+      else
+        t.text :tokens
+      end
 
       t.timestamps
     end
