@@ -32,6 +32,14 @@ GIT
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
 
+GIT
+  remote: git://github.com/osulyanov/devise_token_auth.git
+  revision: 1d6dbdc2e5ba2de00264362a8a876dc98585bd0c
+  specs:
+    devise_token_auth (0.1.37)
+      devise (> 3.5.2, < 4.1.1)
+      rails (< 6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -100,9 +108,6 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
-    devise_token_auth (0.1.37)
-      devise (> 3.5.2, < 4.1)
-      rails (< 6)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -304,7 +309,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
-  devise_token_auth
+  devise_token_auth!
   factory_girl_rails (~> 4.0)
   jbuilder (~> 2.0)
   jquery-rails

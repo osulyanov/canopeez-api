@@ -12,10 +12,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem 'cancancan', '~> 1.10'
-gem 'devise_token_auth'
-gem 'omniauth-github'
+gem 'devise_token_auth',
+    github: 'osulyanov/devise_token_auth'
+# path: '../devise_token_auth'
 gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
 gem 'apipie-rails', github: 'Apipie/apipie-rails'
 gem 'maruku'
 

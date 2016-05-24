@@ -9,6 +9,7 @@ AllCops:
   Exclude:
       - 'db/schema.rb'
       - 'bin/**/*'
+      - 'db/migrate/**/*'
 
 Style/AlignHash:
   EnforcedHashRocketStyle: table
@@ -29,7 +30,6 @@ Metrics/MethodLength:
 Metrics/MethodLength:
   Exclude:
     - 'app/models/ability.rb'
-    - 'db/migrate/**/*'
 
 Metrics/PerceivedComplexity:
   Exclude:
