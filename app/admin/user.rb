@@ -5,6 +5,7 @@ ActiveAdmin.register User do
   index do
     selectable_column
     id_column
+    column :provider
     column :email
     column :full_name
     column :role
