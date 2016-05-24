@@ -16,6 +16,7 @@ gem 'devise_token_auth',
     github: 'osulyanov/devise_token_auth'
 # path: '../devise_token_auth'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 gem 'apipie-rails', github: 'Apipie/apipie-rails'
 gem 'maruku'
 
