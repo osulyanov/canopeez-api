@@ -3,6 +3,7 @@ module Api
     class UsersController < Api::V1::V1Controller
       resource_description do
         short 'Users'
+        description 'Based on [devise_token_auth gem](https://github.com/lynndylanhurley/devise_token_auth)'
       end
 
       def_param_group :user do
@@ -175,6 +176,36 @@ module Api
         }
       EOS
       def sign_out
+      end
+
+      api :GET, '/v1/users/:provider', 'Destination for client authentication'
+      description <<-EOS
+        ## Description
+        Set this route as the destination for client authentication.
+        Ideally this will happen in an external window or popup.
+      EOS
+      def oauth_destination
+      end
+
+      api :GET, '/v1/users/:provider/callback',
+          'Destination for the oauth2 provider\'s callback uri'
+      description <<-EOS
+        ## Description
+        Destination for the oauth2 provider's callback uri. postMessage events
+        containing the authenticated user's data will be sent back to the main
+        client window from this page.
+      EOS
+      def oauth_callback
+      end
+
+      api :GET, '/v1/users/validate_token', 'Validate token'
+      description <<-EOS
+        ## Description
+        Use this route to validate tokens on return visits to the client.
+        Requires uid, client, and access-token as params. These values should
+        correspond to the columns in your User table of the same names.
+      EOS
+      def validate_token
       end
     end
   end
