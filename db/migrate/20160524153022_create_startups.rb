@@ -14,7 +14,7 @@ class CreateStartups < ActiveRecord::Migration
       t.string :youtube_url
       t.string :instagram_url
       t.string :crowdfunding_url
-      t.boolean :is_active
+      t.boolean :is_active, null: false, default: fa
 
       t.timestamps null: false
     end

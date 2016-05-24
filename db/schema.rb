@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 20160524153022) do
     t.string   "youtube_url"
     t.string   "instagram_url"
     t.string   "crowdfunding_url"
-    t.boolean  "is_active"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.boolean  "is_active",        default: false, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "startups", ["category_id"], name: "index_startups_on_category_id", using: :btree

@@ -21,7 +21,7 @@ end
 #  youtube_url      :string
 #  instagram_url    :string
 #  crowdfunding_url :string
-#  is_active        :boolean
+#  is_active        :boolean          default(FALSE), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
