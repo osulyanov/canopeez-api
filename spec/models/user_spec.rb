@@ -120,7 +120,7 @@ end
 #  email                  :string
 #  role                   :integer          default(1), not null
 #  is_premium             :boolean          default(FALSE), not null
-#  tokens                 :json
+#  tokens                 :text
 #  created_at             :datetime
 #  updated_at             :datetime
 #
