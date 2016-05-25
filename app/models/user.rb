@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   enum role: { admin: 0, user: 1 }
 
   has_many :startups
+  has_many :contact_messages
 
   def display_name
     full_name.present? ? full_name : email
