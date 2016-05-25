@@ -1,0 +1,51 @@
+require 'rails_helper'
+
+describe Founder, type: :model do
+  let(:user) { create :user }
+  let(:category) { create :category }
+  let(:startup) { create :startup, user: user, category: category }
+  subject { build :founder, startup: startup }
+
+  it 'is valid' do
+    expect(subject).to be_valid
+  end
+
+  it 'not valid without startup' do
+    subject.startup = nil
+
+    expect(subject).not_to be_valid
+  end
+
+  it 'not valid without name' do
+    subject.name = nil
+
+    expect(subject).not_to be_valid
+  end
+
+  it 'not valid without surname' do
+    subject.surname = nil
+
+    expect(subject).not_to be_valid
+  end
+end
+
+# == Schema Information
+#
+# Table name: founders
+#
+#  id           :integer          not null, primary key
+#  startup_id   :integer
+#  name         :string
+#  surname      :string
+#  position     :string
+#  description  :text
+#  quote        :text
+#  linkedin_url :string
+#  photo_url    :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+# Indexes
+#
+#  index_founders_on_startup_id  (startup_id)
+#
