@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :partners do
+  factory :partner do
     name 'Gazprom'
   end
 end
