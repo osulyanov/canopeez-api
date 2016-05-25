@@ -1,20 +1,19 @@
-ActiveAdmin.register Category do
+ActiveAdmin.register Reference do
   permit_params :name, :description
+
+  belongs_to :startup, optional: true
 
   index do
     selectable_column
     id_column
     column :name
-    column(:startups) do |e|
-      link_to 'Startups', admin_category_startups_path(e)
-    end
     actions
   end
 
   filter :name
 
   form do |f|
-    f.inputs 'Category Details' do
+    f.inputs 'Reference Details' do
       f.input :name
       f.input :description
     end

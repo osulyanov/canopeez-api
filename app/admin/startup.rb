@@ -6,6 +6,9 @@ ActiveAdmin.register Startup do
   scope :all, default: true
   scope 'Active', &:active
 
+  belongs_to :category, optional: true
+  belongs_to :user, optional: true
+
   index do
     selectable_column
     id_column
@@ -13,6 +16,12 @@ ActiveAdmin.register Startup do
     column :user
     column :category
     column :is_active
+    column(:founders) do |e|
+      link_to 'Founders', admin_startup_founders_path(e)
+    end
+    column(:references) do |e|
+      link_to 'References', admin_startup_references_path(e)
+    end
     actions
   end
 

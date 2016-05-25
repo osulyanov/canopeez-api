@@ -15,6 +15,9 @@ ActiveAdmin.register User do
     column :full_name
     column :role
     column :is_premium
+    column(:startups) do |e|
+      link_to 'Startups', admin_user_startups_path(e)
+    end
     actions
   end
 

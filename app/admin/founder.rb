@@ -2,6 +2,8 @@ ActiveAdmin.register Founder do
   permit_params :startup_id, :name, :surname, :position, :description, :quote,
                 :linkedin_url, :photo_url
 
+  belongs_to :startup, optional: true
+
   index do
     selectable_column
     id_column
