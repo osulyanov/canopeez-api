@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160525074435) do
     t.string   "mail"
     t.string   "city"
     t.string   "full_name"
-    t.integer  "type"
+    t.integer  "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

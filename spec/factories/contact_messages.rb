@@ -15,7 +15,7 @@ end
 #  mail       :string
 #  city       :string
 #  full_name  :string
-#  type       :integer
+#  kind       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

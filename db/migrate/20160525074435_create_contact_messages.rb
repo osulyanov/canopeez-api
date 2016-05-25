@@ -7,7 +7,7 @@ class CreateContactMessages < ActiveRecord::Migration
       t.string :mail
       t.string :city
       t.string :full_name
-      t.integer :type
+      t.integer :kind
 
       t.timestamps null: false
     end

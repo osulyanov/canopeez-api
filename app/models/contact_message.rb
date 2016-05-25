@@ -1,6 +1,6 @@
 class ContactMessage < ActiveRecord::Base
   enum action: { reach: 1, reference: 2 }
-  enum type: { company: 1, individual: 2 }
+  enum kind: { company: 1, individual: 2 }
 
   belongs_to :user
 end
@@ -16,7 +16,7 @@ end
 #  mail       :string
 #  city       :string
 #  full_name  :string
-#  type       :integer
+#  kind       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
