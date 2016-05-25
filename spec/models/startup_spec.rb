@@ -1,0 +1,57 @@
+require 'rails_helper'
+
+describe Startup, type: :model do
+  let(:user) { create :user }
+  let(:category) { create :category }
+  subject { build(:startup, user: user, category: category) }
+
+  it 'is valid' do
+    expect(subject).to be_valid
+  end
+
+  it 'not valid without category' do
+    subject.category = nil
+
+    expect(subject).not_to be_valid
+  end
+
+  it 'not valid without name' do
+    subject.name = nil
+
+    expect(subject).not_to be_valid
+  end
+
+  it 'valid without user' do
+    subject.user = nil
+
+    expect(subject).to be_valid
+  end
+end
+
+# == Schema Information
+#
+# Table name: startups
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  category_id      :integer
+#  name             :string
+#  logo_url         :string
+#  description      :text
+#  pitch            :text
+#  twitter_url      :string
+#  facebook_url     :string
+#  google_url       :string
+#  linkedin_url     :string
+#  youtube_url      :string
+#  instagram_url    :string
+#  crowdfunding_url :string
+#  is_active        :boolean          default(FALSE), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+# Indexes
+#
+#  index_startups_on_category_id  (category_id)
+#  index_startups_on_user_id      (user_id)
+#
