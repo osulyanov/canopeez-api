@@ -3,6 +3,9 @@ ActiveAdmin.register Startup do
                 :description, :pitch, :twitter_url, :facebook_url, :google_url,
                 :linkedin_url, :youtube_url, :instagram_url, :crowdfunding_url
 
+  scope :all, default: true
+  scope 'Active', &:active
+
   index do
     selectable_column
     id_column

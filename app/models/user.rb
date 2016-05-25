@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :startups
   has_many :contact_messages
 
+  scope :premium, -> { where is_premium: true }
+  scope :users, -> { where role: roles[:user] }
+  scope :admins, -> { where role: roles[:admin] }
+
   def display_name
     full_name.present? ? full_name : email
   end
