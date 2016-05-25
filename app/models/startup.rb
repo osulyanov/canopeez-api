@@ -5,6 +5,8 @@ class Startup < ActiveRecord::Base
   has_many :references, dependent: :destroy
 
   validates :name, presence: true
+
+  scope :active, -> { where is_active: true }
 end
 
 # == Schema Information
