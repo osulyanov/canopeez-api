@@ -3,6 +3,10 @@ class Founder < ActiveRecord::Base
 
   validates :name, presence: true
   validates :surname, presence: true
+
+  def full_name
+    [name, surname].select(&:present?).join(' ')
+  end
 end
 
 # == Schema Information
