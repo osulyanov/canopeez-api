@@ -1,6 +1,8 @@
 class Startup < ActiveRecord::Base
   belongs_to :user
   belongs_to :category, required: true
+
+  validates :name, presence: true
 end
 
 # == Schema Information
