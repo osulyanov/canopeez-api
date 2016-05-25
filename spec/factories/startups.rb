@@ -3,7 +3,7 @@ FactoryGirl.define do
     user
     category
     sequence :name do |n|
-      "user_#{n}@mysite.com"
+      "Deals #{n}"
     end
     is_active true
   end

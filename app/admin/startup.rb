@@ -1,7 +1,7 @@
 ActiveAdmin.register Startup do
-  permit_params :is_active, :user_id, :category_id, :name, :logo_url, :description,
-                :pitch, :twitter_url, :facebook_url, :google_url, :linkedin_url,
-                :youtube_url, :instagram_url, :crowdfunding_url
+  permit_params :is_active, :user_id, :category_id, :name, :logo_url,
+                :description, :pitch, :twitter_url, :facebook_url, :google_url,
+                :linkedin_url, :youtube_url, :instagram_url, :crowdfunding_url
 
   index do
     selectable_column
