@@ -27,6 +27,40 @@ describe Founder, type: :model do
 
     expect(subject).not_to be_valid
   end
+
+  describe '#full_name' do
+    it 'returns the concatenated first and last name if both are present' do
+      user = create(:user, name: 'Alex', surname: 'Pushkin')
+
+      result = user.full_name
+
+      expect(result).to eq('Alex Pushkin')
+    end
+
+    it 'returns name if name present but surname not' do
+      user = build(:user, name: 'Alex', surname: '')
+
+      result = user.full_name
+
+      expect(result).to eq('Alex')
+    end
+
+    it 'returns surname if surname present but name not' do
+      user = build(:user, name: '', surname: 'Pushkin')
+
+      result = user.full_name
+
+      expect(result).to eq('Pushkin')
+    end
+
+    it 'returns empty string if both name and surname not specified' do
+      user = build(:user, email: 'em@il.ru', name: '', surname: '')
+
+      result = user.full_name
+
+      expect(result).to eq('')
+    end
+  end
 end
 
 # == Schema Information
