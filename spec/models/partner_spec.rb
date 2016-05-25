@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe Partner, type: :model do
+  subject { build :partner }
+
   it 'is valid' do
     expect(subject).to be_valid
   end
