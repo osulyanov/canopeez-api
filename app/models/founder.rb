@@ -1,11 +1,18 @@
 class Founder < ActiveRecord::Base
   belongs_to :startup, required: true
+  belongs_to :user
 
   validates :name, presence: true
   validates :surname, presence: true
 
+  before_save :set_user
+
   def full_name
     [name, surname].select(&:present?).join(' ')
+  end
+
+  def set_user
+    self.user_id = startup.user_id
   end
 end
 
@@ -24,6 +31,7 @@ end
 #  photo_url    :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  user_id      :integer
 #
 # Indexes
 #

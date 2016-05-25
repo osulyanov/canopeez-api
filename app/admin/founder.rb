@@ -1,5 +1,5 @@
 ActiveAdmin.register Founder do
-  permit_params :startup_id, :name, :surname, :position, :description, :quote,
+  permit_params :user_id, :startup_id, :name, :surname, :position, :description, :quote,
                 :linkedin_url, :photo_url
 
   belongs_to :startup, optional: true
@@ -22,6 +22,7 @@ ActiveAdmin.register Founder do
 
   form do |f|
     f.inputs 'Founder Details' do
+      f.input :user
       f.input :startup
       f.input :name
       f.input :surname
