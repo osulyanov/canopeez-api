@@ -12,6 +12,8 @@ class Ability
 
       can :read, Startup, is_active: true
       can :crud, Startup, user_id: user.id
+
+      can :read, Category
     end
   end
 end
