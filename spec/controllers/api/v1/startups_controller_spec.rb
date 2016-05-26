@@ -75,36 +75,63 @@ describe Api::V1::StartupsController, type: :controller do
           expect(result).to be_present
         end
       end
+    end
+  end
 
-      describe 'POST #create' do
-        let(:token) { user.create_new_auth_token }
-        let(:category) { create :category }
-        let(:startup_attributes) do
-          attributes_for(:startup, name: 'New startup',
-                                   category_id: category.id)
-        end
+  describe 'POST #create' do
+    let(:token) { user.create_new_auth_token }
+    let(:category) { create :category }
+    let(:startup_attributes) do
+      attributes_for(:startup, name: 'New startup',
+                               category_id: category.id)
+    end
 
-        before do
-          @request.headers.merge! token
-          post :create, format: :json, startup: startup_attributes
-        end
+    before do
+      @request.headers.merge! token
+      post :create, format: :json, startup: startup_attributes
+    end
 
-        it { expect(response).to have_http_status(:success) }
+    it { expect(response).to have_http_status(:success) }
 
-        it 'creates startup' do
-          last_startup = user.startups.last
+    it 'creates startup' do
+      last_startup = user.startups.last
 
-          result = last_startup.name
+      result = last_startup.name
 
-          expect(result).to eq('New startup')
-        end
+      expect(result).to eq('New startup')
+    end
 
-        context 'anuthorized user' do
-          let(:token) { {} }
+    context 'anuthorized user' do
+      let(:token) { {} }
 
-          it { expect(response).to have_http_status(:unauthorized) }
-        end
-      end
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+  end
+
+  describe 'PUT #update' do
+    let(:token) { user.create_new_auth_token }
+    let!(:startup) { create :startup, user: user }
+
+    before do
+      @request.headers.merge! token
+      put :update, format: :json, id: startup.id,
+          startup: { name: 'Updated startup' }
+    end
+
+    it { expect(response).to have_http_status(:success) }
+
+    it 'updates startup data' do
+      startup.reload
+
+      result = startup.name
+
+      expect(result).to eq('Updated startup')
+    end
+
+    context 'other user' do
+      let(:token) { user_2.create_new_auth_token }
+
+      it { expect(response).to have_http_status(:unauthorized) }
     end
   end
 end
