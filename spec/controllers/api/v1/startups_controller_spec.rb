@@ -75,6 +75,36 @@ describe Api::V1::StartupsController, type: :controller do
           expect(result).to be_present
         end
       end
+
+      describe 'POST #create' do
+        let(:token) { user.create_new_auth_token }
+        let(:category) { create :category }
+        let(:startup_attributes) do
+          attributes_for(:startup, name: 'New startup',
+                                   category_id: category.id)
+        end
+
+        before do
+          @request.headers.merge! token
+          post :create, format: :json, startup: startup_attributes
+        end
+
+        it { expect(response).to have_http_status(:success) }
+
+        it 'creates startup' do
+          last_startup = user.startups.last
+
+          result = last_startup.name
+
+          expect(result).to eq('New startup')
+        end
+
+        context 'anuthorized user' do
+          let(:token) { {} }
+
+          it { expect(response).to have_http_status(:unauthorized) }
+        end
+      end
     end
   end
 end
