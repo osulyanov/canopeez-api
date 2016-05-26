@@ -22,4 +22,59 @@ describe Api::V1::StartupsController, type: :controller do
       expect(result).to contain_exactly(startup_active.id, startup_other.id)
     end
   end
+
+  describe 'GET #show' do
+    context 'active' do
+      let!(:startup) { create :startup, user: user }
+
+      before do
+        @request.headers.merge! user.create_new_auth_token
+        get :show, format: :json, id: startup.id
+      end
+
+      it { expect(response).to have_http_status(:success) }
+
+      it 'returns startup as json' do
+        result = json['id']
+
+        expect(result).to eq(startup.id)
+      end
+    end
+
+    context 'inactive' do
+      context 'current user' do
+        let!(:startup) { create :startup, user: user, is_active: false }
+
+        before do
+          @request.headers.merge! user.create_new_auth_token
+          get :show, format: :json, id: startup.id
+        end
+
+        it { expect(response).to have_http_status(:success) }
+
+        it 'returns startup as json' do
+          result = json['id']
+
+          expect(result).to eq(startup.id)
+        end
+      end
+
+      context 'other user' do
+        let!(:startup) { create :startup, user: user, is_active: false }
+
+        before do
+          @request.headers.merge! user_2.create_new_auth_token
+          get :show, format: :json, id: startup.id
+        end
+
+        it { expect(response).to have_http_status(:unauthorized) }
+
+        it 'returns startup as json' do
+          result = json['message']
+
+          expect(result).to be_present
+        end
+      end
+    end
+  end
 end
