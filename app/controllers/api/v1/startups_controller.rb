@@ -116,7 +116,7 @@ module Api
       description <<-EOS
         ## Description
         Updates startup data.
-        Returns code 200 and startup data if it successfully updated.
+        Returns code 204 if it successfully updated.
       EOS
       param_group :startup
 
@@ -129,7 +129,7 @@ module Api
       description <<-EOS
         ## Description
         Destroys startup.
-        Returns code 204 with no content if startup successfully destroyed.
+        Returns code 204 if it successfully destroyed.
       EOS
 
       def destroy
@@ -141,9 +141,9 @@ module Api
 
       def startup_params
         params.require(:startup)
-            .permit(:category_id, :name, :logo_url, :description, :pitch,
-                    :twitter_url, :facebook_url, :google_url, :linkedin_url,
-                    :youtube_url, :instagram_url, :crowdfunding_url)
+              .permit(:category_id, :name, :logo_url, :description, :pitch,
+                      :twitter_url, :facebook_url, :google_url, :linkedin_url,
+                      :youtube_url, :instagram_url, :crowdfunding_url)
       end
 
       def set_startup
