@@ -134,4 +134,36 @@ describe Api::V1::StartupsController, type: :controller do
       it { expect(response).to have_http_status(:unauthorized) }
     end
   end
+
+  describe 'DELETE #destroy' do
+    let(:token) { user.create_new_auth_token }
+    let!(:startup) { create :startup, user: user }
+
+    before do
+      @request.headers.merge! token
+      delete :destroy, format: :json, id: startup.id
+    end
+
+    it { expect(response).to have_http_status(:success) }
+
+    it 'destroys startup' do
+      result = Startup.all
+
+      expect(result).not_to include(startup)
+    end
+
+    context 'other user cannot destroy startup' do
+      let(:token) { user_2.create_new_auth_token }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+
+      it 'doesn\'t destroy the startup' do
+        startup.reload
+
+        result = startup
+
+        expect(result).to be_persisted
+      end
+    end
+  end
 end
