@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'users'
       resources :startups
+      resources :categories, only: [:index]
     end
   end
 end
