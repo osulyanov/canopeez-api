@@ -1,0 +1,9 @@
+json.id founder.id
+json.startup_id founder.startup_id
+json.name founder.name
+json.surname founder.surname
+json.position founder.position
+json.description founder.description
+json.quote founder.quote
+json.linkedin_url founder.linkedin_url
+json.photo_url founder.photo_url
