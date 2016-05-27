@@ -9,13 +9,13 @@ describe Api::V1::FoundersController, type: :controller do
     let!(:founder) { create :founder, startup: startup }
 
     before do
-      @request.headers.merge! user.create_new_auth_token
+      @request.headers.merge! user_2.create_new_auth_token
       get :index, format: :json
     end
 
-    xit { expect(response).to have_http_status(:success) }
+    it { expect(response).to have_http_status(:success) }
 
-    xit 'returns founders as json' do
+    it 'returns founders as json' do
       result = json.map { |r| r['id'] }
 
       expect(result).to contain_exactly(founder.id)
