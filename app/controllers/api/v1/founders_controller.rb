@@ -12,7 +12,6 @@ module Api
 
       def_param_group :founder do
         param :founder, Hash, desc: 'Founder info', required: true do
-          param :startup_id, Integer, desc: 'Startup ID he belongs to'
           param :name, String, desc: 'Name', required: true
           param :surname, String, desc: 'Surname', required: true
           param :position, String, desc: 'Position'
@@ -71,7 +70,7 @@ module Api
       def show
       end
 
-      api! 'Create founder'
+      api :POST, '/v1/startups/:id/founders', 'Create founder'
       description <<-EOS
         ## Description
         Creates founder.
