@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   enum role: { admin: 0, user: 1 }
 
   has_many :startups
+  has_many :founders
   has_many :contact_messages
 
   scope :premium, -> { where is_premium: true }
