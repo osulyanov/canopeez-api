@@ -1,12 +1,18 @@
 class Startup < ActiveRecord::Base
   belongs_to :user
   belongs_to :category, required: true
-  has_many :founders, dependent: :destroy
+  has_many :founders
   has_many :references, dependent: :destroy
 
   validates :name, presence: true
 
   scope :active, -> { where is_active: true }
+
+  after_destroy :cleanup_founders
+
+  def cleanup_founders
+    founders.update_all startup_id: nil
+  end
 end
 
 # == Schema Information
