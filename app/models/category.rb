@@ -1,6 +1,8 @@
 class Category < ActiveRecord::Base
   has_many :startups
   validates :name, presence: true
+
+  scope :alphabet, -> { order :name }
 end
 
 # == Schema Information
