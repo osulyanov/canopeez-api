@@ -12,7 +12,7 @@ module Api
       api :GET, '/v1/categories', 'Categories list'
       description <<-EOS
         ## Description
-        List of all categories.
+        List of all categories sorted by name.
       EOS
       example <<-EOS
         [
@@ -25,7 +25,7 @@ module Api
       EOS
 
       def index
-        @categories = Category.all
+        @categories = Category.alphabet
         respond_with :api, :v1, @categories
       end
     end
