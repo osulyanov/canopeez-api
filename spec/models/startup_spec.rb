@@ -26,6 +26,20 @@ describe Startup, type: :model do
 
     expect(subject).to be_valid
   end
+
+  describe '#cleanup_founders' do
+    let(:startup) { create :startup, user: user }
+    let!(:founder) { create :founder, startup: startup }
+
+    it 'resets startup_id' do
+      startup.destroy
+      founder.reload
+
+      result = founder.startup_id
+
+      expect(result).to be_nil
+    end
+  end
 end
 
 # == Schema Information
