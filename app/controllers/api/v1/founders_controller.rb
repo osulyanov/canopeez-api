@@ -44,7 +44,7 @@ module Api
       EOS
 
       def index
-        @founders = current_user.founders
+        @founders = Founder.all
         respond_with :api, :v1, @founders
       end
 
