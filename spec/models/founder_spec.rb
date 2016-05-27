@@ -10,12 +10,6 @@ describe Founder, type: :model do
     expect(subject).to be_valid
   end
 
-  it 'not valid without startup' do
-    subject.startup = nil
-
-    expect(subject).not_to be_valid
-  end
-
   it 'not valid without name' do
     subject.name = nil
 
@@ -26,6 +20,24 @@ describe Founder, type: :model do
     subject.surname = nil
 
     expect(subject).not_to be_valid
+  end
+
+  context 'on create' do
+    it 'not valid without startup' do
+      subject.startup = nil
+
+      expect(subject).not_to be_valid
+    end
+  end
+
+  context 'on update' do
+    subject { create :founder, startup: startup }
+
+    it 'valid without startup' do
+      subject.startup = nil
+
+      expect(subject).to be_valid
+    end
   end
 
   describe '#full_name' do

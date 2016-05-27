@@ -1,9 +1,10 @@
 class Founder < ActiveRecord::Base
-  belongs_to :startup, required: true
+  belongs_to :startup
   belongs_to :user
 
   validates :name, presence: true
   validates :surname, presence: true
+  validates :startup_id, presence: true, on: :create
 
   before_save :set_user
 
