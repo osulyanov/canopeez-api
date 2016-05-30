@@ -143,7 +143,11 @@ module Api
         params.require(:startup)
               .permit(:category_id, :name, :logo_url, :description, :pitch,
                       :twitter_url, :facebook_url, :google_url, :linkedin_url,
-                      :youtube_url, :instagram_url, :crowdfunding_url)
+                      :youtube_url, :instagram_url, :crowdfunding_url,
+                      partner_ids: [])
+              .tap do |p|
+          p.delete(:partner_ids) unless can? :have_partners, Startup
+        end
       end
 
       def set_startup
