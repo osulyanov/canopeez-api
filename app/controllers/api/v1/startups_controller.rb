@@ -16,13 +16,14 @@ module Api
           param :logo_url, String, desc: 'Logo URL'
           param :description, String, desc: 'Description'
           param :pitch, String, desc: 'Pitch'
-          param :twitter_url, String, desc: 'Twitter_url'
-          param :facebook_url, String, desc: 'Facebook_url'
-          param :google_url, String, desc: 'Google_url'
-          param :linkedin_url, String, desc: 'Linkedin_url'
-          param :youtube_url, String, desc: 'Youtube_url'
-          param :instagram_url, String, desc: 'Instagram_url'
-          param :crowdfunding_url, String, desc: 'Crowdfunding_url'
+          param :twitter_url, String, desc: 'Twitter URL'
+          param :facebook_url, String, desc: 'Facebook URL'
+          param :google_url, String, desc: 'Google URL'
+          param :linkedin_url, String, desc: 'Linkedin URL'
+          param :youtube_url, String, desc: 'Youtube URL'
+          param :instagram_url, String, desc: 'Instagram URL'
+          param :crowdfunding_url, String, desc: 'Crowdfunding URL'
+          param :partner_ids, Array, desc: 'Partner IDs. For premium users only'
         end
       end
 
