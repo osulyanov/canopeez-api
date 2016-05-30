@@ -13,6 +13,7 @@ class Ability
       can :read, Startup, is_active: true
       can :crud, Startup, user_id: user.id
       can :have_partners, Startup if user.is_premium?
+      can :have_references, Startup if user.is_premium?
 
       can :crud, Founder, user_id: user.id
       can :read, Founder
