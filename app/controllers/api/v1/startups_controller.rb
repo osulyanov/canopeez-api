@@ -76,7 +76,12 @@ module Api
           "linkedin_url": "",
           "youtube_url": "",
           "instagram_url": "",
-          "crowdfunding_url": ""
+          "crowdfunding_url": "",
+          "crowdfunding_url": null,
+          "partner_ids": [
+            1,
+            2
+          ]
         }
       EOS
 
@@ -104,7 +109,12 @@ module Api
           "linkedin_url": "",
           "youtube_url": "",
           "instagram_url": "",
-          "crowdfunding_url": ""
+          "crowdfunding_url": "",
+          "crowdfunding_url": null,
+          "partner_ids": [
+            1,
+            2
+          ]
         }
       EOS
 

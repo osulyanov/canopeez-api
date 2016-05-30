@@ -79,18 +79,15 @@ module Api
       param_group :founder
       example <<-EOS
         {
-          "id": 7,
+          "id": 1,
           "startup_id": 1,
-          "name": "Gena",
-          "surname": "Vetrov",
-          "position": null,
-          "description": null,
-          "quote": null,
-          "linkedin_url": null,
-          "photo_url": null,
-          "created_at": "2016-05-27T10:14:13.703Z",
-          "updated_at": "2016-05-27T10:14:13.703Z",
-          "user_id": 1
+          "name": "Vasiliy",
+          "surname": "Terkin",
+          "position": "SEO",
+          "description": "1",
+          "quote": "2",
+          "linkedin_url": "3",
+          "photo_url": "4"
         }
       EOS
 
