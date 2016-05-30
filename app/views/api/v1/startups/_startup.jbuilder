@@ -12,3 +12,4 @@ json.youtube_url startup.youtube_url
 json.instagram_url startup.instagram_url
 json.crowdfunding_url startup.crowdfunding_url
 json.partner_ids startup.partner_ids
+json.reference_ids startup.reference_ids
