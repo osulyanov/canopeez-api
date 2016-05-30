@@ -137,6 +137,44 @@ describe Api::V1::StartupsController, type: :controller do
       end
     end
 
+    describe 'reference_ids' do
+      context 'premium user' do
+        let(:user) { create :user, is_premium: true }
+        let(:reference) { create :reference }
+        let(:startup_attributes) do
+          attributes_for(:startup, name: 'New startup',
+                                   category_id: category.id,
+                                   reference_ids: [reference.id])
+        end
+
+        it 'sets references' do
+          startup = user.startups.last
+
+          result = startup.reference_ids
+
+          expect(result).to contain_exactly(reference.id)
+        end
+      end
+
+      context 'not premium user' do
+        let(:user) { create :user, is_premium: false }
+        let(:reference) { create :reference }
+        let(:startup_attributes) do
+          attributes_for(:startup, name: 'New startup',
+                                   category_id: category.id,
+                                   reference_ids: [reference.id])
+        end
+
+        it 'doesn\'t sets references' do
+          startup = user.startups.last
+
+          result = startup.reference_ids
+
+          expect(result).to be_empty
+        end
+      end
+    end
+
     context 'anuthorized user' do
       let(:token) { {} }
 
