@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       end
       resources :founders, except: [:create]
       resources :categories, only: [:index]
+      resources :partners, only: [:index]
     end
   end
 end
