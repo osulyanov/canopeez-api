@@ -3,6 +3,12 @@ class Reference < ActiveRecord::Base
 
   validates :url, presence: true
   validates :description, presence: true
+
+  before_save :set_user
+
+  def set_user
+    self.user_id = startup.user_id
+  end
 end
 
 # == Schema Information
@@ -15,6 +21,7 @@ end
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer
 #
 # Indexes
 #
