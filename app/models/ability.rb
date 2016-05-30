@@ -18,6 +18,8 @@ class Ability
       can :create, Founder, startup: { user_id: user.id }
 
       can :read, Category
+
+      can :read, Partner
     end
   end
 end
