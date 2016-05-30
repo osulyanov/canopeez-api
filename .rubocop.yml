@@ -11,6 +11,12 @@ AllCops:
       - 'bin/**/*'
       - 'db/migrate/**/*'
 
+RSpec/InstanceVariable:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
 Style/AlignHash:
   EnforcedHashRocketStyle: table
 
