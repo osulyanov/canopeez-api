@@ -24,6 +24,7 @@ module Api
           param :instagram_url, String, desc: 'Instagram URL'
           param :crowdfunding_url, String, desc: 'Crowdfunding URL'
           param :partner_ids, Array, desc: 'Partner IDs. For premium users only'
+          param :reference_ids, Array, desc: 'Reference IDs. For premium users only'
         end
       end
 
@@ -47,7 +48,13 @@ module Api
             "linkedin_url": "",
             "youtube_url": "",
             "instagram_url": "",
-            "crowdfunding_url": ""
+            "crowdfunding_url": "",
+            "crowdfunding_url": null,
+            "partner_ids": [
+              1,
+              2
+            ],
+            "reference_ids": []
           }
         ]
       EOS
@@ -81,7 +88,8 @@ module Api
           "partner_ids": [
             1,
             2
-          ]
+          ],
+          "reference_ids": []
         }
       EOS
 
@@ -114,7 +122,8 @@ module Api
           "partner_ids": [
             1,
             2
-          ]
+          ],
+          "reference_ids": []
         }
       EOS
 
@@ -155,9 +164,10 @@ module Api
               .permit(:category_id, :name, :logo_url, :description, :pitch,
                       :twitter_url, :facebook_url, :google_url, :linkedin_url,
                       :youtube_url, :instagram_url, :crowdfunding_url,
-                      partner_ids: [])
+                      partner_ids: [], reference_ids: [])
               .tap do |p|
           p.delete(:partner_ids) unless can? :have_partners, Startup
+          p.delete(:reference_ids) unless can? :have_references, Startup
         end
       end
 
