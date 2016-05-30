@@ -101,6 +101,42 @@ describe Api::V1::StartupsController, type: :controller do
       expect(result).to eq('New startup')
     end
 
+    describe 'partner_ids' do
+      context 'premium user' do
+        let(:user) { create :user, is_premium: true }
+        let(:partner) { create :partner }
+        let(:startup_attributes) do
+          attributes_for(:startup, name: 'New startup',
+                         category_id: category.id, partner_ids: [partner.id])
+        end
+
+        it 'sets partners' do
+          startup = user.startups.last
+
+          result = startup.partner_ids
+
+          expect(result).to contain_exactly(partner.id)
+        end
+      end
+
+      context 'not premium user' do
+        let(:user) { create :user, is_premium: false }
+        let(:partner) { create :partner }
+        let(:startup_attributes) do
+          attributes_for(:startup, name: 'New startup',
+                         category_id: category.id, partner_ids: [partner.id])
+        end
+
+        it 'doesn\'t sets partners' do
+          startup = user.startups.last
+
+          result = startup.partner_ids
+
+          expect(result).to be_empty
+        end
+      end
+    end
+
     context 'anuthorized user' do
       let(:token) { {} }
 
@@ -146,7 +182,7 @@ describe Api::V1::StartupsController, type: :controller do
 
     it { expect(response).to have_http_status(:success) }
 
-    it 'destroys startup' do
+    it 'destroys sadf asd fs afd asd startup' do
       result = Startup.all
 
       expect(result).not_to include(startup)
