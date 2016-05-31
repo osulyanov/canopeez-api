@@ -24,7 +24,8 @@ module Api
           param :instagram_url, String, desc: 'Instagram URL'
           param :crowdfunding_url, String, desc: 'Crowdfunding URL'
           param :partner_ids, Array, desc: 'Partner IDs. For premium users only'
-          param :reference_ids, Array, desc: 'Reference IDs. For premium users only'
+          param :reference_ids, Array,
+                desc: 'Reference IDs. For premium users only'
         end
       end
 
