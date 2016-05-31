@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       resources :references, except: [:create]
       resources :categories, only: [:index]
       resources :partners, only: [:index]
+      resources :contact_messages, only: [:create]
     end
   end
 end
