@@ -30,6 +30,8 @@ class Ability
       can :read, Category
 
       can :read, Partner
+
+      can :create, ContactMessage
     end
   end
 end
