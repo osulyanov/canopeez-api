@@ -15,7 +15,9 @@ class Ability
       end
       can :create, Startup
       can [:update, :destroy], Startup, user_id: user.id
-      can [:have_partners, :have_references], Startup if user.is_premium?
+      if user.is_premium?
+        can [:have_partners, :have_references], Startup, user_id: user.id
+      end
 
       can :read, Founder
       can :create, Founder
