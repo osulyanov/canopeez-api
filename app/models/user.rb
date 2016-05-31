@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :startups
   has_many :founders
+  has_many :references
   has_many :contact_messages
 
   scope :premium, -> { where is_premium: true }
