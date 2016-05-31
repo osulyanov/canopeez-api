@@ -5,10 +5,10 @@ class Reference < ActiveRecord::Base
   validates :url, presence: true
   validates :description, presence: true
 
-  before_save :set_user
+  before_validation :set_user
 
   def set_user
-    self.user_id = startup.user_id
+    self.user_id = startup.user_id if startup
   end
 end
 
