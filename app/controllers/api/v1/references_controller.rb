@@ -72,7 +72,7 @@ module Api
       EOS
 
       def create
-        authorize! :update, @startup
+        authorize! :have_references, @startup
         @reference = @startup.references.create(reference_params)
         respond_with :api, :v1, @reference
       end
