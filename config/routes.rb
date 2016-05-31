@@ -23,9 +23,11 @@ Rails.application.routes.draw do
       resources :startups do
         member do
           resources :founders, only: [:create]
+          resources :references, only: [:create]
         end
       end
       resources :founders, except: [:create]
+      resources :references, except: [:create]
       resources :categories, only: [:index]
       resources :partners, only: [:index]
     end
