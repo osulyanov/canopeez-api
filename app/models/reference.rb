@@ -1,5 +1,6 @@
 class Reference < ActiveRecord::Base
   belongs_to :startup, required: true
+  belongs_to :user, required: true
 
   validates :url, presence: true
   validates :description, presence: true
