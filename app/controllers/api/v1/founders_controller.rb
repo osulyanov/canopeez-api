@@ -92,6 +92,7 @@ module Api
       EOS
 
       def create
+        authorize! :update, @startup
         @founder = @startup.founders.create(founder_params)
         respond_with :api, :v1, @founder
       end
