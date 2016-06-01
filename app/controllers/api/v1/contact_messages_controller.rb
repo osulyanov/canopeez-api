@@ -38,8 +38,8 @@ module Api
       private
 
       def contact_message_params
-        params.require(:contact_message).permit(:message, :action, :mail, :city,
-                                                :full_name, :kind)
+        params.require(:contact_message)
+              .permit(:message, :action, :mail, :city, :full_name, :kind)
       end
     end
   end
