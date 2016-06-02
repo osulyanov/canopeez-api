@@ -23,6 +23,7 @@ gem 'maruku'
 group :production do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'rollbar'
 end
 
 group :development do
