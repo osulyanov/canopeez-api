@@ -195,6 +195,7 @@ GEM
       activerecord (>= 3.0)
     powerpack (0.1.1)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5.1)
@@ -320,6 +321,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-linkedin
   pg (~> 0.15)
+  rack-cors
   rails (= 4.2.5.1)
   rails_12factor
   rollbar

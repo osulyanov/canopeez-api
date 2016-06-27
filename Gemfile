@@ -19,6 +19,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'apipie-rails', github: 'Apipie/apipie-rails'
 gem 'maruku'
+gem 'rack-cors', require: 'rack/cors'
 
 group :production do
   gem 'rails_12factor'
