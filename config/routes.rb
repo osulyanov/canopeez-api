@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: { format: 'json' } do
+    match '*any' => 'api#options', via: [:options]
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'users'
       resources :startups do
