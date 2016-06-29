@@ -41,15 +41,7 @@ module Canopeez
       allow do
         origins '*'
         resource '*', headers: :any,
-                 methods: [:get, :post, :options,  :put, :create, :delete]
-      end
-    end
-
-    config.middleware.insert_before Warden::Manager, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', headers: :any,
-                 methods: [:get, :post, :options, :put, :create, :delete]
+                      methods: [:get, :post, :options, :put, :create, :delete]
       end
     end
   end
