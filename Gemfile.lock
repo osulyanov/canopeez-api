@@ -34,9 +34,9 @@ GIT
 
 GIT
   remote: git://github.com/osulyanov/devise_token_auth.git
-  revision: 1d6dbdc2e5ba2de00264362a8a876dc98585bd0c
+  revision: 382e8720b1842b9f7c4712833f014c1fa7d5f709
   specs:
-    devise_token_auth (0.1.37)
+    devise_token_auth (0.1.38)
       devise (> 3.5.2, < 4.1.1)
       rails (< 6)
 
@@ -318,8 +318,10 @@ DEPENDENCIES
   letter_opener
   maruku
   newrelic_rpm
+  omniauth
   omniauth-facebook
   omniauth-linkedin
+  omniauth-oauth2
   pg (~> 0.15)
   rack-cors
   rails (= 4.2.5.1)

@@ -15,6 +15,8 @@ gem 'cancancan', '~> 1.10'
 gem 'devise_token_auth',
     github: 'osulyanov/devise_token_auth'
 # path: '../devise_token_auth'
+gem 'omniauth'
+gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'apipie-rails', github: 'Apipie/apipie-rails'
