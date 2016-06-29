@@ -2,8 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
   config.action_mailer
-        .default_url_options = { host: 'canopez.herokuapp.com' }
-  OmniAuth.config.full_host = 'http://canopez.herokuapp.com'
+        .default_url_options = { host: 'canopeez.herokuapp.com' }
+  OmniAuth.config.full_host = 'https://canopeez.herokuapp.com'
 
   # Code is not reloaded between requests.
   config.cache_classes = true
