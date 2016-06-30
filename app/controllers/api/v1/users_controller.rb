@@ -161,7 +161,6 @@ module Api
         ## Description
         Destroys auth token.
       EOS
-      param_group :user
       example <<-EOS
         Success:
         {
