@@ -42,15 +42,15 @@ module Canopeez
         'Access-Control-Request-Method' => %w{GET POST OPTIONS PUT}.join(',')
     }
 
-    # config.middleware.insert_before 0, Rack::Cors do
-    #   allow do
-    #     origins '*'
-    #     resource '*',
-    #              headers: :any,
-    #              expose: ['access-token', 'expiry', 'token-type', 'uid',
-    #                       'client'],
-    #              methods: [:get, :post, :options, :put, :create, :delete]
-    #   end
-    # end
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+                 headers: :any,
+                 expose: ['access-token', 'expiry', 'token-type', 'uid',
+                          'client'],
+                 methods: [:get, :post, :options, :put, :create, :delete]
+      end
+    end
   end
 end
