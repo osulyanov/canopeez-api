@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :founders
   has_many :references
   has_many :contact_messages
+  has_many :favorites, dependent: :destroy
 
   scope :premium, -> { where is_premium: true }
   scope :users, -> { where role: roles[:user] }
