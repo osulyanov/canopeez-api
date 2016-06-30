@@ -32,6 +32,8 @@ class Ability
       can :read, Partner
 
       can :create, ContactMessage
+
+      can :crud, Favorite, user_id: user.id
     end
   end
 end

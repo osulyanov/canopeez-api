@@ -7,7 +7,7 @@ describe Api::V1::CredentialsController, type: :controller do
 
     before do
       @request.headers.merge! token
-      get :show, format: :json
+      get :show, format: :json, me: true
     end
 
     it { expect(response).to have_http_status(:success) }

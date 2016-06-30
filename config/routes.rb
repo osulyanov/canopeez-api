@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     match '*any' => 'api#options', via: [:options]
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'users'
-      resource :credentials, only: [:show], path: :me do
+      resource :credentials, only: [:show], path: :me, me: true do
+        resources :favorites, only: [:index]
       end
       resources :startups do
         member do
