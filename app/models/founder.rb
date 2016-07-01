@@ -4,7 +4,7 @@ class Founder < ActiveRecord::Base
 
   validates :name, presence: true
   validates :surname, presence: true
-  validates :startup_id, presence: true, on: :create
+  # validates :startup, presence: true, on: :create
 
   before_save :set_user
 

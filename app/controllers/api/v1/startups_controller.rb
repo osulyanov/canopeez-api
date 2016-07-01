@@ -26,6 +26,18 @@ module Api
           param :partner_ids, Array, desc: 'Partner IDs. For premium users only'
           param :reference_ids, Array,
                 desc: 'Reference IDs. For premium users only'
+          param :founders_attributes, Array, desc: 'Array of founders' do
+            param ':number', Array, desc: 'Serial number of founder, 0-999',
+                  required: true do
+              param :name, String, desc: 'Name', required: true
+              param :surname, String, desc: 'Surname', required: true
+              param :position, String, desc: 'Position'
+              param :description, String, desc: 'Description'
+              param :quote, String, desc: 'Quote'
+              param :linkedin_url, String, desc: 'Linkedin URL'
+              param :photo_url, String, desc: 'Photo URL'
+            end
+          end
         end
       end
 
@@ -55,7 +67,11 @@ module Api
               1,
               2
             ],
-            "reference_ids": []
+            "reference_ids": [],
+            "founder_ids": [
+              17,
+              16
+            ]
           }
         ]
       EOS
@@ -90,7 +106,11 @@ module Api
             1,
             2
           ],
-          "reference_ids": []
+          "reference_ids": [],
+            "founder_ids": [
+              17,
+              16
+            ]
         }
       EOS
 
@@ -124,7 +144,11 @@ module Api
             1,
             2
           ],
-          "reference_ids": []
+          "reference_ids": [],
+          "founder_ids": [
+            17,
+            16
+          ]
         }
       EOS
 
@@ -162,11 +186,14 @@ module Api
 
       def startup_params
         params.require(:startup)
-              .permit(:category_id, :name, :logo_url, :description, :pitch,
-                      :twitter_url, :facebook_url, :google_url, :linkedin_url,
-                      :youtube_url, :instagram_url, :crowdfunding_url,
-                      partner_ids: [], reference_ids: [])
-              .tap do |p|
+            .permit(:category_id, :name, :logo_url, :description, :pitch,
+                    :twitter_url, :facebook_url, :google_url, :linkedin_url,
+                    :youtube_url, :instagram_url, :crowdfunding_url,
+                    partner_ids: [], reference_ids: [],
+                    founders_attributes: [[:id, :name, :surname, :position,
+                                           :description, :quote, :linkedin_url,
+                                           :photo_url]])
+            .tap do |p|
           p.delete(:partner_ids) unless can? :have_partners, Startup
           p.delete(:reference_ids) unless can? :have_references, Startup
         end

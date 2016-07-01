@@ -13,3 +13,4 @@ json.instagram_url startup.instagram_url
 json.crowdfunding_url startup.crowdfunding_url
 json.partner_ids startup.partner_ids
 json.reference_ids startup.reference_ids
+json.founder_ids startup.founder_ids
