@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resource :credentials, only: [:show], path: :me, me: true do
         resources :favorites, only: [:index]
         resources :ratings, only: [:index]
+        resources :comments, only: [:index]
       end
       resources :startups do
         member do
