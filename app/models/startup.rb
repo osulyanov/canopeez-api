@@ -3,6 +3,7 @@ class Startup < ActiveRecord::Base
   belongs_to :category, required: true
   has_many :founders, dependent: :destroy
   has_many :references, dependent: :destroy
+  has_many :ratings, dependent: :destroy
   has_and_belongs_to_many :partners
 
   validates :name, presence: true

@@ -34,6 +34,8 @@ class Ability
       can :create, ContactMessage
 
       can :crud, Favorite, user_id: user.id
+
+      can :crud, Rating
     end
   end
 end
