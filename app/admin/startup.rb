@@ -5,6 +5,7 @@ ActiveAdmin.register Startup do
 
   scope :all, default: true
   scope 'Active', &:active
+  scope 'Submit for review', &:submit_for_review
 
   belongs_to :category, optional: true
   belongs_to :user, optional: true
@@ -16,6 +17,7 @@ ActiveAdmin.register Startup do
     column :user
     column :category
     column :is_active
+    column :submit_for_review
     column(:founders) do |e|
       link_to 'Founders', admin_startup_founders_path(e)
     end
@@ -29,10 +31,12 @@ ActiveAdmin.register Startup do
   filter :user
   filter :category
   filter :is_active
+  filter :submit_for_review
 
   form do |f|
     f.inputs 'Startup Details' do
       f.input :is_active
+      f.input :submit_for_review
       f.input :user
       f.input :category
       f.input :name
