@@ -1,6 +1,4 @@
 ActiveAdmin.register Reference do
-  permit_params :startup_id, :url, :description
-
   belongs_to :startup, optional: true
 
   index do

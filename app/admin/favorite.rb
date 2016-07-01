@@ -1,6 +1,4 @@
 ActiveAdmin.register Favorite do
-  permit_params :user_id, :startup_id
-
   index do
     selectable_column
     id_column

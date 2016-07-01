@@ -1,6 +1,4 @@
 ActiveAdmin.register ContactMessage do
-  permit_params :user_id, :message, :action, :mail, :city, :full_name, :kind
-
   index do
     selectable_column
     id_column

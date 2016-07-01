@@ -1,6 +1,4 @@
 ActiveAdmin.register Partner do
-  permit_params :name, :logo_url
-
   index do
     selectable_column
     id_column

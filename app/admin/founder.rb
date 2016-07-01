@@ -1,7 +1,4 @@
 ActiveAdmin.register Founder do
-  permit_params :user_id, :startup_id, :name, :surname, :position, :description,
-                :quote, :linkedin_url, :photo_url
-
   belongs_to :startup, optional: true
 
   index do

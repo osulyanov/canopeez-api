@@ -1,8 +1,4 @@
 ActiveAdmin.register Startup do
-  permit_params :is_active, :user_id, :category_id, :name, :logo_url,
-                :description, :pitch, :twitter_url, :facebook_url, :google_url,
-                :linkedin_url, :youtube_url, :instagram_url, :crowdfunding_url
-
   scope :all, default: true
   scope 'Active', &:active
   scope 'Submit for review', &:submit_for_review

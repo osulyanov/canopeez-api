@@ -1,7 +1,4 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :role, :name,
-                :surname, :school, :is_premium
-
   scope :all, default: true
   scope 'Premium', &:premium
   scope 'Users', &:users
