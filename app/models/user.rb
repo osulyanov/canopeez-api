@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_many :ratings, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 
   scope :premium, -> { where is_premium: true }
   scope :users, -> { where role: roles[:user] }
