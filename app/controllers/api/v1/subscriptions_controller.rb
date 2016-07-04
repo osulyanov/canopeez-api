@@ -29,11 +29,11 @@ module Api
         respond_with :api, :v1, @subscriptions
       end
 
-      api! 'Create subscription'
+      api :POST, '/v1/subscriptions', 'Create subscription'
       description <<-EOS
         ## Description
         Subscribe to startup.
-        Returns code 201 and subscription ID if it successfully created.
+        Returns code 201 and subscription data if it successfully created.
       EOS
       param :subscription, Hash, desc: 'Subscription info',
                                  required: true do
@@ -41,7 +41,8 @@ module Api
       end
       example <<-EOS
         {
-          "id": 3
+          "id": 3,
+          "startup_id": 1
         }
       EOS
 
@@ -50,7 +51,7 @@ module Api
         respond_with :api, :v1, @subscription
       end
 
-      api! 'Remove from subscriptions'
+      api :DELETE, '/v1/subscriptions/:id', 'Remove from subscriptions'
       description <<-EOS
         ## Description
         Remove subscription by ID.
