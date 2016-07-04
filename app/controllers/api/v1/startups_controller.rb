@@ -139,14 +139,18 @@ module Api
           ],
           "founder_ids": [
             4,
-            3
+            3,
+            2,
+            1
           ],
           "favorite": true,
           "subscribed": true,
           "attachments": [
             {
               "text": "Awesome! ",
-              "user_name": "Name4 Surname"
+              "user": {
+                "display_name": "Name4 Surname"
+              }
             }
           ]
         }

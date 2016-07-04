@@ -20,6 +20,8 @@ if user_signed_in? && current_user.id != startup.user_id
   json.subscribed startup.in_subscriptions?(current_user)
   json.attachments startup.comments do |comment|
     json.text comment.comment
-    json.user_name comment.user.display_name
+    json.user do
+      json.display_name comment.user.display_name
+    end
   end
 end
