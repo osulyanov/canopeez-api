@@ -35,6 +35,8 @@ class Ability
 
       can :crud, Favorite, user_id: user.id
 
+      can :crud, Subscription, user_id: user.id
+
       can :read, Rating
 
       can :read, Comment
