@@ -32,6 +32,7 @@ Rails.application.routes.draw do
           resources :references, only: [:create]
         end
       end
+      resources :favorites, only: [:create, :destroy]
       resources :founders, except: [:create]
       resources :references, except: [:create]
       resources :categories, only: [:index]
