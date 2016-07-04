@@ -1,2 +1,2 @@
-json.partial! 'api/v1/subscriptions/subscription', collection: @subscription,
+json.partial! 'api/v1/subscriptions/subscription', collection: @subscriptions,
                                                    as: :subscription
