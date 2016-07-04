@@ -22,4 +22,33 @@ describe Api::V1::CommentsController, type: :controller do
       expect(result).to contain_exactly(comment.id)
     end
   end
+
+  describe 'POST #create' do
+    let(:token) { user.create_new_auth_token }
+    let(:startup) { create :startup, user: user }
+    let!(:comment_attributes) { { startup_id: startup.id, comment: 'Test' } }
+
+    before do
+      @request.headers.merge! token
+      post :create, format: :json, comment: comment_attributes
+    end
+
+    context 'logged in user' do
+      it { expect(response).to have_http_status(:success) }
+
+      it 'creates comment' do
+        comment = user.comments.last
+
+        result = comment.startup_id
+
+        expect(result).to eq(startup.id)
+      end
+    end
+
+    context 'guest user' do
+      let(:token) { {} }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+  end
 end
