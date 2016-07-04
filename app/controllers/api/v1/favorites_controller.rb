@@ -10,7 +10,7 @@ module Api
         short 'Favorites'
       end
 
-      api :GET, '/v1/me/founders', 'Favorites list'
+      api :GET, '/v1/me/favorites', 'Favorites list'
       description <<-EOS
         ## Description
         List of favorites.
@@ -32,7 +32,7 @@ module Api
       api! 'Create favorite'
       description <<-EOS
         ## Description
-        Remove startup from favorites.
+        Add startup to favorites.
         Returns code 201 and favorite ID if it successfully created.
       EOS
       param :favorite, Hash, desc: 'Favorite info',
