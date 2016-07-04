@@ -19,7 +19,12 @@ module Api
         [
           {
             "id": 1,
-            "startup_id": 1
+            "startup": {
+              "id": 1,
+              "name": "Deals",
+              "description": "Good app",
+              "rating": 5
+            }
           }
         ]
       EOS
@@ -40,10 +45,15 @@ module Api
         param :startup_id, Integer, desc: 'Startup ID'
       end
       example <<-EOS
-        {
-          "id": 3,
-          "startup_id": 1
+      {
+        "id": 1,
+        "startup": {
+          "id": 1,
+          "name": "Deals",
+          "description": "Good app",
+          "rating": 5
         }
+      }
       EOS
 
       def create

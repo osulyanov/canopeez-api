@@ -1,1 +1,4 @@
-json.extract! favorite, :id, :startup_id
+json.extract! favorite, :id
+json.startup do
+  json.extract! favorite.startup, :id, :name, :description, :rating
+end
