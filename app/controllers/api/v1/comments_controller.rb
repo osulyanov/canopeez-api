@@ -19,7 +19,8 @@ module Api
           {
             "id": 1,
             "startup_id": 1,
-            "comment": "Awesome! "
+            "comment": "Awesome! ",
+            "created_at": "2016-07-01T10:37:23.758Z"
           }
         ]
       EOS
