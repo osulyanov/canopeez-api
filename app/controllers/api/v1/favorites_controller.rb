@@ -29,10 +29,31 @@ module Api
         respond_with :api, :v1, @favorites
       end
 
+      api! 'Create favorite'
+      description <<-EOS
+        ## Description
+        Remove startup from favorites.
+        Returns code 201 and favorite ID if it successfully created.
+      EOS
+      param :favorite, Hash, desc: 'Favorite info',
+                             required: true do
+        param :startup_id, Integer, desc: 'Startup ID'
+      end
+      example <<-EOS
+        {
+          "id": 3
+        }
+      EOS
+
+      def create
+        @favorite = current_user.favorites.create(favorite_params)
+        respond_with :api, :v1, @favorite
+      end
+
       api! 'Remove from favorites'
       description <<-EOS
         ## Description
-        Remove from favorites by favorite ID (not startup ID).
+        Remove favorite by ID.
         Returns code 204 if it successfully removed.
       EOS
 
@@ -42,6 +63,10 @@ module Api
       end
 
       private
+
+      def favorite_params
+        params.require(:favorite).permit(:startup_id)
+      end
 
       def set_user
         @user = if params[:me]

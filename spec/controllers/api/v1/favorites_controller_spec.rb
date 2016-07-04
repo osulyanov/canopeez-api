@@ -21,6 +21,35 @@ describe Api::V1::FavoritesController, type: :controller do
     end
   end
 
+  describe 'POST #create' do
+    let(:token) { user.create_new_auth_token }
+    let(:startup) { create :startup, user: user }
+    let!(:favorite_attributes) { { startup_id: startup.id } }
+
+    before do
+      @request.headers.merge! token
+      post :create, format: :json, favorite: favorite_attributes
+    end
+
+    context 'logged in user' do
+      it { expect(response).to have_http_status(:success) }
+
+      it 'creates favorite' do
+        favorite = user.favorites.last
+
+        result = favorite.startup_id
+
+        expect(result).to eq(startup.id)
+      end
+    end
+
+    context 'guest user' do
+      let(:token) { {} }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+  end
+
   describe 'DELETE #destroy' do
     let(:token) { user.create_new_auth_token }
     let(:startup) { create :startup, user: user }
