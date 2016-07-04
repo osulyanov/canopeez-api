@@ -28,7 +28,7 @@ module Api
                 desc: 'Reference IDs. For premium users only'
           param :founders_attributes, Array, desc: 'Array of founders' do
             param ':number', Array, desc: 'Serial number of founder, 0-999',
-                  required: true do
+                                    required: true do
               param :name, String, desc: 'Name', required: true
               param :surname, String, desc: 'Surname', required: true
               param :position, String, desc: 'Position'
@@ -87,6 +87,7 @@ module Api
         Show startup by ID
       EOS
       example <<-EOS
+        For owner:
         {
           "id": 1,
           "category_id": 1,
@@ -111,6 +112,43 @@ module Api
               17,
               16
             ]
+        }
+
+        For other users:
+        {
+          "id": 1,
+          "category_id": 1,
+          "name": "Deals",
+          "logo_url": "",
+          "description": "Good app",
+          "pitch": "We are the best",
+          "twitter_url": "",
+          "facebook_url": "",
+          "google_url": "",
+          "linkedin_url": "",
+          "youtube_url": "",
+          "instagram_url": "",
+          "crowdfunding_url": "",
+          "partner_ids": [
+            1
+          ],
+          "reference_ids": [
+            2,
+            3,
+            4
+          ],
+          "founder_ids": [
+            4,
+            3
+          ],
+          "favorite": true,
+          "subscribed": true,
+          "attachments": [
+            {
+              "text": "Awesome! ",
+              "user_name": "Name4 Surname"
+            }
+          ]
         }
       EOS
 
@@ -186,14 +224,14 @@ module Api
 
       def startup_params
         params.require(:startup)
-            .permit(:category_id, :name, :logo_url, :description, :pitch,
-                    :twitter_url, :facebook_url, :google_url, :linkedin_url,
-                    :youtube_url, :instagram_url, :crowdfunding_url,
-                    partner_ids: [], reference_ids: [],
-                    founders_attributes: [[:id, :name, :surname, :position,
-                                           :description, :quote, :linkedin_url,
-                                           :photo_url]])
-            .tap do |p|
+              .permit(:category_id, :name, :logo_url, :description, :pitch,
+                      :twitter_url, :facebook_url, :google_url, :linkedin_url,
+                      :youtube_url, :instagram_url, :crowdfunding_url,
+                      partner_ids: [], reference_ids: [],
+                      founders_attributes: [[:id, :name, :surname, :position,
+                                             :description, :quote, :linkedin_url,
+                                             :photo_url]])
+              .tap do |p|
           p.delete(:partner_ids) unless can? :have_partners, Startup
           p.delete(:reference_ids) unless can? :have_references, Startup
         end
