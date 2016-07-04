@@ -28,6 +28,9 @@ Rails.application.routes.draw do
         resources :comments, only: [:index]
       end
       resources :startups do
+        collection do
+          get :search
+        end
         member do
           resources :founders, only: [:create]
           resources :references, only: [:create]

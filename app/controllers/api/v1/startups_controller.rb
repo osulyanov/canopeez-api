@@ -81,6 +81,35 @@ module Api
         respond_with :api, :v1, @startups
       end
 
+      api :GET, '/v1/startups/search', 'Search by startups'
+      description <<-EOS
+        ## Description
+        Search by startups.
+      EOS
+      param :keyword, String, desc: 'Search by keyword'
+      param :startup_ids, Array, desc: 'Search by category ID'
+      example <<-EOS
+        [
+          {
+            "id": 1,
+            "name": "Deals",
+            "description": "Good app",
+            "rating": 5
+          }
+        ]
+      EOS
+
+      def search
+        @startups = Startup.active
+        if params[:keyword].present?
+          @startups = @startups.search_by_keyword(params[:keyword])
+        end
+        if params[:category_ids].present?
+          @startups = @startups.search_by_category(params[:category_ids])
+        end
+        respond_with :api, :v1, @startups
+      end
+
       api! 'Show startup'
       description <<-EOS
         ## Description
@@ -233,8 +262,8 @@ module Api
                       :youtube_url, :instagram_url, :crowdfunding_url,
                       partner_ids: [], reference_ids: [],
                       founders_attributes: [[:id, :name, :surname, :position,
-                                             :description, :quote, :linkedin_url,
-                                             :photo_url]])
+                                             :description, :quote,
+                                             :linkedin_url, :photo_url]])
               .tap do |p|
           p.delete(:partner_ids) unless can? :have_partners, Startup
           p.delete(:reference_ids) unless can? :have_references, Startup

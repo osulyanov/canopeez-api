@@ -13,7 +13,7 @@ class Ability
       can :read, Startup do |startup|
         startup.is_active? || startup.user_id == user.id
       end
-      can :create, Startup
+      can [:search, :create], Startup
       can [:update, :destroy], Startup, user_id: user.id
       if user.is_premium?
         can [:have_partners, :have_references], Startup, user_id: user.id

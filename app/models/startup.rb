@@ -14,8 +14,15 @@ class Startup < ActiveRecord::Base
 
   scope :active, -> { where is_active: true }
   scope :submit_for_review, -> { where submit_for_review: true }
+  scope :search_by_keyword, -> (keyword) do
+    where('startups.search_data ILIKE ?', "%#{keyword}%")
+  end
+  scope :search_by_category, -> (category_ids) do
+    where(id: Category.where(id: category_ids).map(&:startup_ids).flatten.uniq)
+  end
 
   after_destroy :cleanup_founders
+  before_save :update_search_data
 
   def cleanup_founders
     founders.update_all startup_id: nil
@@ -31,6 +38,13 @@ class Startup < ActiveRecord::Base
 
   def rating
     ratings.any? ? ratings.sum(:value) / ratings.count : 0
+  end
+
+  def update_search_data
+    self.search_data = [name, description, category.name,
+                        founders.map(&:full_name),
+                        references.map(&:description)]
+                           .flatten.select(&:present?).join ' '
   end
 end
 
@@ -56,6 +70,7 @@ end
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  submit_for_review :boolean          default(FALSE), not null
+#  search_data       :text
 #
 # Indexes
 #
