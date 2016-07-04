@@ -5,6 +5,7 @@ class Startup < ActiveRecord::Base
   has_many :references, dependent: :destroy
   has_many :ratings, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_and_belongs_to_many :partners
 
   accepts_nested_attributes_for :founders
@@ -26,6 +27,10 @@ class Startup < ActiveRecord::Base
 
   def in_subscriptions?(user)
     user.subscriptions.where(startup_id: id).any?
+  end
+
+  def rating
+    ratings.any? ? ratings.sum(:value) / ratings.count : 0
   end
 end
 
