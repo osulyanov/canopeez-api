@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         end
       end
       resources :favorites, only: [:create, :destroy]
+      resources :ratings, only: [:create, :destroy]
       resources :subscriptions, only: [:create, :destroy]
       resources :founders, except: [:create]
       resources :references, except: [:create]

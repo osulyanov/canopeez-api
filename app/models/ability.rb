@@ -37,9 +37,11 @@ class Ability
 
       can :crud, Subscription, user_id: user.id
 
-      can :read, Rating
+      can [:create, :read], Rating
+      can [:update, :destroy], Rating, user_id: user.id
 
-      can :read, Comment
+      can [:create, :read], Comment
+      can [:update, :destroy], Comment, user_id: user.id
     end
   end
 end

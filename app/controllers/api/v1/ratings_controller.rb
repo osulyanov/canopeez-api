@@ -29,7 +29,34 @@ module Api
         respond_with :api, :v1, @ratings
       end
 
+      api :POST, '/v1/ratings', 'Rate startup'
+      description <<-EOS
+        ## Description
+        Creates rating.
+        Returns code 201 and rating data if it successfully created.
+      EOS
+      param :rating, Hash, desc: 'Rating info', required: true do
+        param :startup_id, Integer, desc: 'Startup ID'
+        param :value, Integer, desc: 'Rating value, 1-5'
+      end
+      example <<-EOS
+        {
+          "id": 1,
+          "startup_id": 1,
+          "value": 5
+        }
+      EOS
+
+      def create
+        @rating = current_user.ratings.create(rating_params)
+        respond_with :api, :v1, @rating
+      end
+
       private
+
+      def rating_params
+        params.require(:rating).permit(:startup_id, :value)
+      end
 
       def set_user
         @user = if params[:me]
