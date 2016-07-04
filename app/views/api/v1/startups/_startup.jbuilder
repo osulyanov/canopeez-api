@@ -14,3 +14,12 @@ json.crowdfunding_url startup.crowdfunding_url
 json.partner_ids startup.partner_ids
 json.reference_ids startup.reference_ids
 json.founder_ids startup.founder_ids
+
+if user_signed_in? && current_user.id != startup.user_id
+  json.favorite startup.in_favorites?(current_user)
+  json.subscribed startup.in_subscriptions?(current_user)
+  json.attachments startup.comments do |comment|
+    json.text comment.comment
+    json.user_name comment.user.display_name
+  end
+end
