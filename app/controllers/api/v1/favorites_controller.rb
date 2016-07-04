@@ -33,7 +33,7 @@ module Api
       description <<-EOS
         ## Description
         Add startup to favorites.
-        Returns code 201 and favorite ID if it successfully created.
+        Returns code 201 and favorite data if it successfully created.
       EOS
       param :favorite, Hash, desc: 'Favorite info',
                              required: true do
@@ -41,7 +41,8 @@ module Api
       end
       example <<-EOS
         {
-          "id": 3
+          "id": 3,
+          "startup_id": 1
         }
       EOS
 
