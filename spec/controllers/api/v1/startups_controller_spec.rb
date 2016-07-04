@@ -220,7 +220,7 @@ describe Api::V1::StartupsController, type: :controller do
 
     it { expect(response).to have_http_status(:success) }
 
-    it 'destroys sadf asd fs afd asd startup' do
+    it 'destroys startup' do
       result = Startup.all
 
       expect(result).not_to include(startup)
