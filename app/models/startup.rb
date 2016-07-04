@@ -19,6 +19,14 @@ class Startup < ActiveRecord::Base
   def cleanup_founders
     founders.update_all startup_id: nil
   end
+
+  def in_favorites?(user)
+    user.favorites.where(startup_id: id).any?
+  end
+
+  def in_subscriptions?(user)
+    user.subscriptions.where(startup_id: id).any?
+  end
 end
 
 # == Schema Information
