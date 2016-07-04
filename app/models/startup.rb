@@ -44,7 +44,7 @@ class Startup < ActiveRecord::Base
     self.search_data = [name, description, category.name,
                         founders.map(&:full_name),
                         references.map(&:description)]
-                           .flatten.select(&:present?).join ' '
+                       .flatten.select(&:present?).join ' '
   end
 end
 
