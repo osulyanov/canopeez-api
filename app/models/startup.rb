@@ -8,7 +8,7 @@ class Startup < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_and_belongs_to_many :partners
 
-  accepts_nested_attributes_for :founders
+  accepts_nested_attributes_for :founders, :partners
 
   validates :name, presence: true
 
