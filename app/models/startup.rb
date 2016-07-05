@@ -6,10 +6,9 @@ class Startup < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :partners_startups, autosave: true
-  has_many :partners, through: :partners_startups
+  has_and_belongs_to_many :partners
 
-  accepts_nested_attributes_for :founders, :partners_startups
+  accepts_nested_attributes_for :founders
 
   validates :name, presence: true
 

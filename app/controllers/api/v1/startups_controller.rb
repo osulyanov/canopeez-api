@@ -225,10 +225,6 @@ module Api
 
       def create
         @startup = current_user.startups.create(startup_params)
-        Rails.logger.info "startup_params[:partner_ids]=#{startup_params[:partner_ids].inspect}"
-        partners = Partner.where(id: startup_params[:partner_ids]) if startup_params[:partner_ids].present?
-        Rails.logger.info "partners=#{partners.inspect}"
-        @startup.partners << partners if partners
         respond_with :api, :v1, @startup
       end
 
