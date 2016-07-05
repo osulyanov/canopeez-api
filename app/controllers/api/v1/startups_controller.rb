@@ -24,8 +24,8 @@ module Api
           param :instagram_url, String, desc: 'Instagram URL'
           param :crowdfunding_url, String, desc: 'Crowdfunding URL'
           param :partner_ids, Array, desc: 'Partner IDs. For premium users only'
-          param :reference_ids, Array,
-                desc: 'Reference IDs. For premium users only'
+          # param :reference_ids, Array,
+          #       desc: 'Reference IDs. For premium users only'
           param :founders_attributes, Array, desc: 'Array of founders' do
             param ':number', Array, desc: 'Serial number of founder, 0-999',
                                     required: true do
