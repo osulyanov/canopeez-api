@@ -1,4 +1,6 @@
 class PartnersStartup < ActiveRecord::Base
+  belongs_to :partner
+  belongs_to :startup
 end
 
 # == Schema Information
