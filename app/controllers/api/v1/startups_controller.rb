@@ -225,6 +225,7 @@ module Api
 
       def create
         @startup = current_user.startups.create(startup_params)
+        @startup.partners << Partner.where(id: startup_params[:partner_ids]) if startup_params[:partner_ids].present?
         respond_with :api, :v1, @startup
       end
 
