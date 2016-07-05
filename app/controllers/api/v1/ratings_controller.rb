@@ -17,9 +17,13 @@ module Api
       example <<-EOS
         [
           {
-            "id": 1,
-            "startup_id": 1,
-            "value": 5
+            "id": 2,
+            "value": 3,
+            "created_at": "2016-07-04T16:25:43.838Z",
+            "startup": {
+              "id": 1,
+              "name": "Deals"
+            }
           }
         ]
       EOS
@@ -41,9 +45,13 @@ module Api
       end
       example <<-EOS
         {
-          "id": 1,
-          "startup_id": 1,
-          "value": 5
+          "id": 2,
+          "value": 3,
+          "created_at": "2016-07-04T16:25:43.838Z",
+          "startup": {
+            "id": 1,
+            "name": "Deals"
+          }
         }
       EOS
 
