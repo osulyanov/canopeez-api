@@ -11,7 +11,7 @@ ActiveAdmin.register Partner do
   form do |f|
     f.inputs 'Partner Details' do
       f.input :name
-      f.input :logo_url
+      f.input :logo, as: :file, image_preview: true
     end
     f.actions
   end

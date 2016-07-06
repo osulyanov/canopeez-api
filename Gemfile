@@ -23,6 +23,9 @@ gem 'omniauth-linkedin'
 gem 'apipie-rails', github: 'Apipie/apipie-rails'
 gem 'maruku'
 gem 'rack-cors', require: 'rack/cors'
+gem 'fog', require: 'fog/aws'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'rmagick'
 
 group :production do
   gem 'rails_12factor'

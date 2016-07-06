@@ -13,7 +13,7 @@ module Api
         param :startup, Hash, desc: 'Startup info', required: true do
           param :name, String, desc: 'Name', required: true
           param :category_id, Integer, desc: 'Category', required: true
-          param :logo_url, String, desc: 'Logo URL'
+          param :logo, ActionDispatch::Http::UploadedFile, desc: 'Logo Image'
           param :description, String, desc: 'Description'
           param :pitch, String, desc: 'Pitch'
           param :twitter_url, String, desc: 'Twitter URL'
@@ -52,7 +52,7 @@ module Api
             "id": 1,
             "category_id": 1,
             "name": "Deals",
-            "logo_url": "",
+            "logo_url": "https://canopeez-development.s3.amazonaws.com/uploads/startup/logo/1/eye22n.jpeg",
             "description": "Good app",
             "pitch": "We are the best",
             "twitter_url": "",
@@ -121,7 +121,7 @@ module Api
           "id": 1,
           "category_id": 1,
           "name": "Deals",
-          "logo_url": "",
+          "logo_url": "https://canopeez-development.s3.amazonaws.com/uploads/startup/logo/1/eye22n.jpeg",
           "description": "Good app",
           "pitch": "We are the best",
           "twitter_url": "",
@@ -200,7 +200,7 @@ module Api
           "id": 1,
           "category_id": 1,
           "name": "Deals",
-          "logo_url": "",
+          "logo_url": "https://canopeez-development.s3.amazonaws.com/uploads/startup/logo/1/eye22n.jpeg",
           "description": "Good app",
           "pitch": "We are the best",
           "twitter_url": "",
@@ -257,7 +257,7 @@ module Api
 
       def startup_params
         params.require(:startup)
-              .permit(:category_id, :name, :logo_url, :description, :pitch,
+              .permit(:category_id, :name, :logo, :description, :pitch,
                       :twitter_url, :facebook_url, :google_url, :linkedin_url,
                       :youtube_url, :instagram_url, :crowdfunding_url,
                       partner_ids: [], reference_ids: [],

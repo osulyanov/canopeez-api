@@ -1,4 +1,6 @@
 class Startup < ActiveRecord::Base
+  mount_uploader :logo, ImageUploader
+
   belongs_to :user
   belongs_to :category, required: true
   has_many :founders, dependent: :destroy
@@ -56,7 +58,6 @@ end
 #  user_id           :integer
 #  category_id       :integer
 #  name              :string
-#  logo_url          :string
 #  description       :text
 #  pitch             :text
 #  twitter_url       :string
@@ -71,6 +72,7 @@ end
 #  updated_at        :datetime         not null
 #  submit_for_review :boolean          default(FALSE), not null
 #  search_data       :text
+#  logo              :string
 #
 # Indexes
 #

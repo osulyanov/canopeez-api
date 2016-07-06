@@ -18,7 +18,7 @@ module Api
           {
             "id": 1,
             "name": "Yandex",
-            "logo_url": "1"
+            "logo_url": "https://canopeez-development.s3.amazonaws.com/uploads/startup/logo/1/eye22n.jpeg",
           }
         ]
       EOS

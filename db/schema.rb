@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704123508) do
+ActiveRecord::Schema.define(version: 20160706095304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,9 +92,9 @@ ActiveRecord::Schema.define(version: 20160704123508) do
 
   create_table "partners", force: :cascade do |t|
     t.string   "name"
-    t.string   "logo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "logo"
   end
 
   create_table "partners_startups", id: false, force: :cascade do |t|
@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(version: 20160704123508) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.string   "name"
-    t.string   "logo_url"
     t.text     "description"
     t.text     "pitch"
     t.string   "twitter_url"
@@ -147,6 +146,7 @@ ActiveRecord::Schema.define(version: 20160704123508) do
     t.datetime "updated_at",                        null: false
     t.boolean  "submit_for_review", default: false, null: false
     t.text     "search_data"
+    t.string   "logo"
   end
 
   add_index "startups", ["category_id"], name: "index_startups_on_category_id", using: :btree

@@ -36,7 +36,7 @@ ActiveAdmin.register Startup do
       f.input :user
       f.input :category
       f.input :name
-      f.input :logo_url
+      f.input :logo, as: :file, image_preview: true
       f.input :description
       f.input :pitch
       f.input :twitter_url

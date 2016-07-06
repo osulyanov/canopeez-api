@@ -1,7 +1,7 @@
 json.id startup.id
 json.category_id startup.category_id
 json.name startup.name
-json.logo_url startup.logo_url
+json.logo_url startup.logo.url if startup.logo?
 json.description startup.description
 json.pitch startup.pitch
 json.twitter_url startup.twitter_url
