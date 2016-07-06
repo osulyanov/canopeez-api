@@ -1,7 +1,6 @@
 module Api
   module V1
     class CategoriesController < Api::V1::V1Controller
-      before_action :authenticate_user!
       load_and_authorize_resource
 
       resource_description do
