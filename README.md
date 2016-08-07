@@ -1,5 +1,11 @@
 Geoconfess
 ===========
+GENERAL INSTRUCTIONS
+ 
+ 1. for each change to db, make the corresponding change to the active admin panel
+ 2. run tests! (bundle exec rspec spec/) before each push to make sure you havent broken anything (I will run the tests too)
+ 3. If you have access to heroku, run the migration after each push (wait 2 minutes for app to deploy automatically)
+ 3. UPDATE API documentation every time you make a change!
 
 # Deploy (only for test environments)
 
